@@ -143,8 +143,10 @@ class VarDeclExpr implements Expression {
         this.exp = exp;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+        Value v1 = this.exp.evaluate(env);
+        env.createVar(varName, v1);
+
+        return v1;
     }
 }
 
