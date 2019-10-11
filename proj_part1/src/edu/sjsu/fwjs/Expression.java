@@ -188,15 +188,22 @@ class FunctionDeclExpr implements Expression {
  * Function application.
  */
 class FunctionAppExpr implements Expression {
-    private Expression f;
+    private Expression f;  // Evaluates to the closure object
     private List<Expression> args;
     public FunctionAppExpr(Expression f, List<Expression> args) {
         this.f = f;
         this.args = args;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+    	List<Value> valArgs= new ArrayList<Value>();
+    	
+    	ClosureVal closure = (ClosureVal) f.evaluate(env);
+    	
+        for (Expression exp: args){
+        	valArgs.add(exp.evaluate(new Environment(env)));
+        }
+        
+        return closure.apply(valArgs);
     }
 }
 
