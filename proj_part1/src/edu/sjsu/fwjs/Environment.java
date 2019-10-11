@@ -46,6 +46,9 @@ public class Environment {
      * a RuntimeException is thrown.
      */
     public void createVar(String key, Value v) {
-        // YOUR CODE HERE
+        if (!env.containsKey(key))
+        	env.put(key, v);
+        else
+        	throw new RuntimeException("Value already exists!");
     }
 }
