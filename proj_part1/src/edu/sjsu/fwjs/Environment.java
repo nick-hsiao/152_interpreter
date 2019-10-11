@@ -50,7 +50,13 @@ public class Environment {
      * or any of the function's outer scopes, the var is stored in the global scope.
      */
     public void updateVar(String key, Value v) {
-        // YOUR CODE HERE
+        if(env.get(key) != null) { // is in local scope
+            env.put(key, v);
+        } else if (outerEnv == null){ // global scope
+            env.put(key, v);
+        } else { // the variable to update is not in local scope
+            outerEnv.updateVar(key, v);
+       }
     }
 
     /**
