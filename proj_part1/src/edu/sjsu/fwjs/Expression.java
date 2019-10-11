@@ -91,8 +91,12 @@ class IfExpr implements Expression {
         this.els = els;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+        BoolVal b1 = (BoolVal) cond.evaluate(env);
+        if(b1.toBoolean()){
+            return thn.evaluate(env);
+        } else{
+            return els.evaluate(env);
+        }
     }
 }
 
@@ -123,8 +127,8 @@ class SeqExpr implements Expression {
         this.e2 = e2;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+        e1.evaluate(env);
+        return e2.evaluate(env);
     }
 }
 
