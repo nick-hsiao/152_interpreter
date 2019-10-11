@@ -111,7 +111,32 @@ class WhileExpr implements Expression {
         this.body = body;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
+        BoolVal flag = (BoolVal) cond.evaluate(env);        
+        if(flag.toBoolean())
+        {
+            body.evaluate(env);
+            return this.evaluate(env);
+        } else
+        {
+            return null;
+        }
+        
+//      BoolVal flag = (BoolVal) cond.evaluate(env);
+//      Value result ;
+//      
+//        while(flag.toBoolean()) {
+//          result = body.evaluate(env);
+//          flag = (BoolVal) cond.evaluate(env);
+//        } 
+
+        
+        
+        
+//        while(cond.evaluate(env).toString() == "true") {
+//          result = body.evaluate(env);
+        
+
+        //return null;
         return null;
     }
 }
