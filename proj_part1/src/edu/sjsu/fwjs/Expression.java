@@ -151,14 +151,14 @@ class VarDeclExpr implements Expression {
  */
 class AssignExpr implements Expression {
     private String varName;
-    private Expression e;
+    private Expression e;  // Should be ValueExpr class
     public AssignExpr(String varName, Expression e) {
         this.varName = varName;
         this.e = e;
     }
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+        env.updateVar(varName, e.evaluate(env));
+        return e.evaluate(env);  // Same as ValueExpr.evaluate(env);
     }
 }
 
