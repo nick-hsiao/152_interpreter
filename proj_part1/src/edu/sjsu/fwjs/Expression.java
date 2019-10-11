@@ -127,8 +127,10 @@ class SeqExpr implements Expression {
         this.e2 = e2;
     }
     public Value evaluate(Environment env) {
-        e1.evaluate(env);
-        return e2.evaluate(env);
+    	//Value val1 = e1.evaluate(env);
+    	e1.evaluate(env);
+        Value val2 = e2.evaluate(env);
+        return val2;
     }
 }
 
