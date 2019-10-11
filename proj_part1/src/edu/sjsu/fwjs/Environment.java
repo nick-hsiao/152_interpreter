@@ -32,7 +32,7 @@ public class Environment {
             if(outerEnv != null)
                 outerEnv.resolveVar(varName);
             else
-                return null;
+                return new NullVal();
         }
         
         return env.get(varName);
