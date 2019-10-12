@@ -72,8 +72,33 @@ class BinOpExpr implements Expression {
 
     @SuppressWarnings("incomplete-switch")
     public Value evaluate(Environment env) {
-        // YOUR CODE HERE
-        return null;
+        int a = ((IntVal) e1.evaluate(env)).toInt();
+    	int b = ((IntVal) e2.evaluate(env)).toInt();
+    	
+    	switch(op) {
+    	case ADD:
+    		return new IntVal(a + b);
+    	case SUBTRACT:
+    		return new IntVal(a - b);
+    	case MULTIPLY:
+    		return new IntVal(a * b);
+    	case DIVIDE:
+            return new IntVal(a / b);
+        case EQ:
+    		return new BoolVal(a == b);
+    	case MOD:
+    		return new IntVal(a % b);
+    	case GT:
+    		return new BoolVal(a > b);
+    	case GE:
+    		return new BoolVal(a >= b);
+    	case LT:
+    		return new BoolVal(a < b);
+    	case LE:
+    		return new BoolVal(a <= b);
+    	default:
+    		return null;
+    	}
     }
 }
 
