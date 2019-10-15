@@ -70,7 +70,6 @@ class BinOpExpr implements Expression {
         this.e2 = e2;
     }
 
-    @SuppressWarnings("incomplete-switch")
     public Value evaluate(Environment env) {
         int a = ((IntVal) e1.evaluate(env)).toInt();
     	int b = ((IntVal) e2.evaluate(env)).toInt();
@@ -141,28 +140,9 @@ class WhileExpr implements Expression {
         {
             body.evaluate(env);
             return this.evaluate(env);
-        } else
-        {
+        } 
+        else
             return null;
-        }
-        
-//      BoolVal flag = (BoolVal) cond.evaluate(env);
-//      Value result ;
-//      
-//        while(flag.toBoolean()) {
-//          result = body.evaluate(env);
-//          flag = (BoolVal) cond.evaluate(env);
-//        } 
-
-        
-        
-        
-//        while(cond.evaluate(env).toString() == "true") {
-//          result = body.evaluate(env);
-        
-
-        //return null;
-        return null;
     }
 }
 
@@ -245,11 +225,11 @@ class FunctionAppExpr implements Expression {
     }
     public Value evaluate(Environment env) {
     	List<Value> valArgs= new ArrayList<Value>();
-    	
+ 
     	ClosureVal closure = (ClosureVal) f.evaluate(env);
     	
         for (Expression exp: args){
-        	valArgs.add(exp.evaluate(new Environment(env)));
+        	valArgs.add(exp.evaluate(env));
         }
         
         return closure.apply(valArgs);
