@@ -1,6 +1,6 @@
 # Update these variables to match the locations
-JUNIT_JAR=lib/junit-4.12.jar
-HAMCREST_JAR=lib/hamcrest-core-1.3.jar
+JUNIT_JAR="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar"
+HAMCREST_JAR="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"
 
 # These variables should not need to be changed
 TEST_CLASSPATH=${JUNIT_JAR}:${HAMCREST_JAR}
